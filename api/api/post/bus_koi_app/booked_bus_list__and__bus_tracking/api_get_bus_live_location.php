@@ -5,29 +5,23 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-include_once '../../../config/Database.php';
-include_once '../../../model/Search_Buses_By_Location_and_Date.php';
+include_once '../../../../config/Database.php';
+include_once '../../../../model/bus_koi_app/booked_bus_list__and__bus_tracking/Get_Bus_Live_Location_Model.php';
 
 // Instantiate DB & connect
 $database = new Database();
 $db = $database->connect();
 
 // Instantiate blog post object
-$post = new Search_Buses_By_Location_and_Date($db);
+$post = new Get_Bus_Live_Location_Model($db);
 
 // Get raw posted data
 $data = json_decode(file_get_contents("php://input"));
 
-//$phn_no = $_POST["phn_no"];
-$from = "Dhaka";
-$to = "Rajshahi";
-$date = "2021-05-20";
 
-// $from = $_POST["from"];
-// $to = $_POST["to"];
-// $date = $_POST["date"];
+$schedule_id = "20210520000100022200ha01010";
 
-$arr = $post->read($from, $to, $date);
+$arr = $post->read($schedule_id);
 
 if(!empty($arr)) {
     echo json_encode($arr);

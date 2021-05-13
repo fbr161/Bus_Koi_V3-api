@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-include_once '../../../config/Database.php';
-include_once '../../../model/Purchase_Ticket_Model.php';
+include_once '../../../../config/Database.php';
+include_once '../../../../model/bus_koi_app/purchase_ticket/Purchase_Ticket_Model.php';
 
 // Instantiate DB & connect
 $database = new Database();
