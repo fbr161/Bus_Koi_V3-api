@@ -5,8 +5,8 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-include_once '../../config/Database.php';
-include_once '../../model/Search_Buses_By_Location_and_Date.php';
+include_once '../../../config/Database.php';
+include_once '../../../model/Search_Buses_By_Location_and_Date.php';
 
 // Instantiate DB & connect
 $database = new Database();
@@ -21,12 +21,16 @@ $data = json_decode(file_get_contents("php://input"));
 //$phn_no = $_POST["phn_no"];
 $from = "Dhaka";
 $to = "Rajshahi";
-$date = "2021-04-20";
+$date = "2021-05-20";
+
+// $from = $_POST["from"];
+// $to = $_POST["to"];
+// $date = $_POST["date"];
 
 $arr = $post->read($from, $to, $date);
 
 if(!empty($arr)) {
-    echo json_encode(array('bus_list' =>$arr));
+    echo json_encode($arr);
 }
 
 

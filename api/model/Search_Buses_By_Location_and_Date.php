@@ -10,9 +10,9 @@ class Search_Buses_By_Location_and_Date{
     //get post
     public function read($from, $to, $date)
     {
-        $query = "SELECT ID, dep_time, company_name, ac_status, Fare, available_seats
-         FROM daily_schedule as s JOIN bus as b ON s.bus_no=b.Bus_No
-         WHERE s.Source_Location='$from' AND Destination_location='$to' AND s.date = '$date'";  //date formate    2021-04-20
+        $query = "SELECT ID, TIME(date_time) as dep_time, company_name, ac_status, Fare, available_seats
+         FROM schedule 
+         WHERE from_loc='$from' AND to_loc='$to' AND DATE(date_time) = '$date'";  //date formate    2021-04-20
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -23,8 +23,8 @@ class Search_Buses_By_Location_and_Date{
             $jf['schedule_id']=$result['ID'];
             $jf['dep_time']=$result['dep_time'];
             $jf['company_name']=$result['company_name'];
-            $jf['ac_status']=$result['ac_status'];
-            $jf['Fare']=$result['Fare'];
+            $jf['ac_status']=false; if ($result['ac_status']) $jf['ac_status']=true;
+            $jf['fare']=$result['Fare'];
             $jf['available_seats']=$result['available_seats'];
 
             array_push($data, $jf);

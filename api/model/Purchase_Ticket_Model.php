@@ -8,21 +8,22 @@ class Purchase_Ticket_Model
     }
 
     //get post
-    public function purchase($schedule_id, $user_phn_no, $seat_no, $issed_date_time, $fare, $issued_by ){
+    public function purchase($schedule_id, $user_id, $passenger_phn, $passenger_name, $gender, $seat_no, $fare, $issued_by ){
 
-        if($this->checkValidUser($user_phn_no)==0 ||  $this->checkValid_schedule_id($schedule_id)==0)
+        if($this->checkValidUser($issued_by)==0 ||  $this->checkValid_schedule_id($schedule_id)==0)
             return false;
 
+        $issed_date_time = date("Y-m-d H:i:s")."";
         
-        $ticket_id = 'T'.$this->countTciketRow();
-        $bus_no = $this->getBusNo($schedule_id);
+        // $ticket_id = 'T'.$this->countTciketRow();
+        // $bus_no = $this->getBusNo($schedule_id);
         $flag = 1;
 
-        if($this->checkValid_bus_no($bus_no)==0)
-            return false;
+        // if($this->checkValid_bus_no($bus_no)==0)
+        //     return false;
 
-        $query ="INSERT INTO ticket (`ticket_id`, `schedule_id`, `user_phn_no`, `seat_no`, `issed_date_time`, `fare`, `issued_by`, `bus_no`) 
-                VALUES ('$ticket_id', '$schedule_id', '$user_phn_no', '$seat_no', '$issed_date_time', $fare, '$issued_by', '$bus_no')";
+        $query ="INSERT INTO ticket ( `schedule_id`, `user_id`, `passenger_phn`, `passenger_name`, `gender`, `seat_no`, `issed_date_time`, `fare`, `issued_by`, `bus_no`) 
+                VALUES ('$schedule_id', '$user_id', '$passenger_phn', '$passenger_name', '$gender', '$seat_no', '$issed_date_time', $fare, '$issued_by', '')";
 
         $cnt = $this->conn->prepare($query);
         $cnt->execute();
@@ -65,7 +66,7 @@ class Purchase_Ticket_Model
     private function getBusNo($schedule_id){
 
         $query ="SELECT Bus_no AS b
-                FROM daily_schedule
+                FROM schedule
                 WHERE ID = '$schedule_id'";
 
         $cnt = $this->conn->prepare($query);
@@ -94,7 +95,7 @@ class Purchase_Ticket_Model
     private function checkValid_schedule_id($id){
 
         $query = "SELECT ID
-            FROM daily_schedule
+            FROM schedule
             WHERE ID='$id'";
 
         $stmt = $this->conn->prepare($query);
