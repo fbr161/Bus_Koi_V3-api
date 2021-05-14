@@ -2,6 +2,7 @@
 
 class Booked_Bus_List_Model{
 
+    private $conn;
 
     public function __construct($db) {$this->conn = $db;}
 

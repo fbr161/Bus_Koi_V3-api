@@ -2,8 +2,7 @@
 
 class Search_Buses_By_Location_and_Date{
 
-
-
+    private $conn;
 
     public function __construct($db) {$this->conn = $db;}
 

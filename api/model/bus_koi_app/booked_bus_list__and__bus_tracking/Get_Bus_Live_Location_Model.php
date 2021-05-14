@@ -2,7 +2,7 @@
 
 class Get_Bus_Live_Location_Model{
 
-
+    private $conn;
     public function __construct($db) {$this->conn = $db;}
 
     //get post

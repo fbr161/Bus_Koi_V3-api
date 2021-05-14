@@ -2,7 +2,6 @@
 class Purchase_Ticket_Model
 {
     private $conn;
-
     public function __construct($db){
         $this->conn = $db;
     }

@@ -2,7 +2,7 @@
 
 class Get_Seat_Condition_Model{
 
-
+    private $conn;
     public function __construct($db) {$this->conn = $db;}
 
     //get post

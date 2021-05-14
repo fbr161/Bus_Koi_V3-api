@@ -1,6 +1,7 @@
 
 <?php
 class Emergency_Contact_No_CRUD_Model{
+    
     private $conn;
 
     public function __construct($db){
