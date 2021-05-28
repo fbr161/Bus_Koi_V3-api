@@ -19,8 +19,11 @@ class Get_Bus_Live_Location_Model{
         $data = array();
         foreach($stmt as $result){
 
-            $jf['lat']=$result['lat'];
-            $jf['lon']=$result['lon'];
+            // $jf['schedule_id']=$schedule_id;
+            $jf['last_Lat']=$result['lat'];
+            $jf['last_Lon']=$result['lon'];
+
+            return $jf;
 
             array_push($data, $jf);
         }

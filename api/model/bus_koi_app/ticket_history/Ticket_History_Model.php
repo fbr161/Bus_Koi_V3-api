@@ -29,11 +29,11 @@ class Ticket_History_Model{
 
             $jf['from']=$result['from_loc'];
             $jf['to']=$result['to_loc'];
-            $jf['dep_time']=$result['dep_time'];
-            $jf['dep_date']=$result['dep_date'];
+            $jf['time']=$result['dep_time'];
+            $jf['date']=$result['dep_date'];
             $jf['company_name']=$result['company_name'];
             $jf['fare']=$result['fare'];
-            $jf['booked_seats_no']=$result['booked_seats_no'];
+            $jf['seat_no']=$result['booked_seats_no'];
             $jf['ac_status']=false; if ($result['ac_status']) $jf['ac_status']=true;
             $jf['schedule_id']=$result['schedule_id'];
 

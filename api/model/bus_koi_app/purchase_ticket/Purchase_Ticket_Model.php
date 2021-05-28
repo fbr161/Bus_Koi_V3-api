@@ -34,7 +34,8 @@ class Purchase_Ticket_Model
 
     private function updateSeatCondition($schedule_id, $seat_no){
 
-        $seat_condition_array = explode(":",$seat_no);
+        $seat_condition_array = explode(",",$seat_no);
+        
 
         foreach($seat_condition_array as $s){
 
@@ -43,9 +44,10 @@ class Purchase_Ticket_Model
                         WHERE schedule_id='$schedule_id'";
 
             $cnt = $this->conn->prepare($query);
-            if($cnt->execute()) return true;
-            return false;
+            if(!$cnt->execute())
+                return false;
         }
+        return true;
     }
 
     private function countTciketRow(){

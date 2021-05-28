@@ -20,6 +20,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 $driver_phn_no = "01712XXX";
 
+//$driver_phn_no = $_POST['bus_no'];
 
 $arr = $post->read($driver_phn_no);
 

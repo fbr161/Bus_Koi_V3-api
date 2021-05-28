@@ -55,9 +55,10 @@ class Emergency_Contact_No_CRUD_Model{
         $data = array();
         foreach($stmt as $result){
 
-            $jf['contact_name']=$result['contact_name'];
-            $jf['contact_phn_no']=$result['contact_phn_no'];
+            $jf['name']=$result['contact_name'];
+            $jf['phn_no']=$result['contact_phn_no'];
 
+            return $jf;
             array_push($data, $jf);
         }
 

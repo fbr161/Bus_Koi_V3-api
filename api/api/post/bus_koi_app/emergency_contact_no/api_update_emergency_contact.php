@@ -19,9 +19,13 @@ $post = new Emergency_Contact_No_CRUD_Model($db);
 $data = json_decode(file_get_contents("php://input"));
 
 
-$user_phn_no = "01739703058";
-$emergency_contact_phn_no = "016ABC";
-$emergency_contact_name = "Mr. ABC";
+// $user_phn_no = "01739703058";
+// $emergency_contact_phn_no = "016ABC";
+// $emergency_contact_name = "Mr. ABC";
+
+$user_phn_no = $_POST["user_phn_no"];
+$emergency_contact_phn_no = $_POST["emergency_contact_phn_no"];
+$emergency_contact_name = $_POST["emergency_contact_name"];
 
 $arr = $post->update($user_phn_no, $emergency_contact_phn_no, $emergency_contact_name);
 

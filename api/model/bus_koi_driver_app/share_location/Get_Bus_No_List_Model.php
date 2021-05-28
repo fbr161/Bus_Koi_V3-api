@@ -18,9 +18,9 @@ class Get_Bus_No_List_Model{
         $data = array();
         foreach($stmt as $result){
 
-            $jf['bus_no']=$result['bus_no'];
+            //$jf['bus_no']=$result['bus_no'];
 
-            array_push($data, $jf);
+            array_push($data, $result['bus_no']);
         }
 
         return $data;

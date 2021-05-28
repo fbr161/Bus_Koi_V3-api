@@ -32,7 +32,7 @@ $issued_by = $_POST["issued_by"];
 // $passenger_phn = "0171234";
 // $passenger_name = "fuad";
 // $gender = true;
-// $seat_no = "1A";
+// $seat_no = "5A,5B";
 // $fare = 500;
 // $issued_by = "01739703058";
 

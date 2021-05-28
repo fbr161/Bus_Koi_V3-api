@@ -18,9 +18,13 @@ $post = new Update_Bus_Live_Location_Model($db);
 // Get raw posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$bus_no = "Hanif_1";
-$lat = 4;
-$lon = 4;
+// $bus_no = "Hanif_1";
+// $lat = 4;
+// $lon = 4;
+
+$bus_no = $_POST['bus_no'];
+$lat = $_POST['lat'];
+$lon = $_POST['lon'];
 
 
 $arr = $post->update($bus_no, $lat, $lon);
@@ -28,5 +32,3 @@ $arr = $post->update($bus_no, $lat, $lon);
 if(!empty($arr)) {
     echo json_encode($arr);
 }
-
-
